@@ -57,7 +57,7 @@ button:hover {
 
 <body>
 
-<h1>請在畢業紀念冊尋找隱藏訊息，如果有英文請輸入小寫</h1>
+<h1>「於卒業誌中，細尋其隱微。若遇泰西文字，咸從卑小。」</h1>
 
 <input type="password" id="password" placeholder="Enter password">
 <button onclick="checkPassword()">Enter</button>
@@ -68,12 +68,13 @@ button:hover {
 
 <script>
 var insults = [
-    "密碼錯誤。這樣也想畢業？",
-    "再試一次吧，偵探先生。",
-    "這都猜不到？",
-    "認真點啦。",
-    "提示就在你眼前。",
-    "你確定你有翻紀念冊嗎？"
+    "密號謬誤，弗能入也。",
+    "復尋其路，未可知也。",
+    "迷而不覺，遂無所獲耶？",
+    "哀哉，徒勞而無功。",
+    "端倪在目，君竟不察。",
+    "君果曾披閱是冊乎？抑或過目而弗察也？",
+    "窮其篇章，端倪盡在東南一隅。"
 ];
 
 var wrongCount = 0;
@@ -96,13 +97,13 @@ function flashEffect() {
 function lockSystem() {
     locked = true;
     var message = document.getElementById("message");
-    message.innerHTML = "嘗試太多次。系統鎖定 5 秒。";
+    message.innerHTML = "試之頻仍，鎖閉五秒。";
     message.style.color = "orange";
 
     setTimeout(function() {
         locked = false;
         wrongCount = 0;
-        message.innerHTML = "可以再試一次了。";
+        message.innerHTML = "五秒已過，復可試之。";
         message.style.color = "#00ff99";
     }, 5000);
 }
@@ -119,7 +120,7 @@ function checkPassword() {
 
         flashEffect();
 
-        message.innerHTML = "Access Granted.";
+        message.innerHTML = "豁然開朗。";
         message.style.color = "#00ff99";
         photo.style.display = "block";
 
