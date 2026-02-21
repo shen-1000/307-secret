@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>307 Secret</title>
+
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 120px;
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+}
+
+button {
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#photo {
+    margin-top: 30px;
+    display: none;
+    width: 300px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Enter Password</h1>
+
+<input type="password" id="password">
+<button onclick="checkPassword()">Enter</button>
+
+<p id="message"></p>
+
+<img id="photo" src="photo.jpg">
+
+<script>
+function checkPassword() {
+    var input = document.getElementById("password").value;
+    var message = document.getElementById("message");
+    var photo = document.getElementById("photo");
+
+    if (input === "mavis") {
+        message.innerHTML = "Correct.";
+        photo.style.display = "block";
+    } else {
+        message.innerHTML = "Wrong password. Try harder.";
+    }
+}
+</script>
+
+</body>
+</html>
