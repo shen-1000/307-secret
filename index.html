@@ -2,6 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- 手機自適應關鍵 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>307 Secret</title>
 
 <style>
@@ -10,33 +14,48 @@ body {
     color: #00ff99;
     font-family: monospace;
     text-align: center;
-    padding-top: 120px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     transition: background-color 0.2s;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
 }
 
 h1 {
     color: white;
-    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 input {
-    padding: 10px;
-    font-size: 18px;
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
     background-color: black;
     color: #00ff99;
     border: 1px solid #00ff99;
+    text-align: center;
 }
 
 button {
-    padding: 10px;
-    font-size: 18px;
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
     background-color: black;
     color: #00ff99;
     border: 1px solid #00ff99;
 }
 
-button:hover {
+button:active {
     background-color: #00ff99;
     color: black;
 }
@@ -44,12 +63,14 @@ button:hover {
 #message {
     margin-top: 20px;
     min-height: 30px;
+    font-size: 15px;
 }
 
 #photo {
-    margin-top: 30px;
+    margin-top: 25px;
     display: none;
-    width: 300px;
+    max-width: 80%;
+    height: auto;
     border: 2px solid #00ff99;
 }
 </style>
@@ -57,14 +78,19 @@ button:hover {
 
 <body>
 
+<div class="container">
+
 <h1>「於卒業誌中，細尋其隱微。若遇泰西文字，咸從卑小。」</h1>
 
 <input type="password" id="password" placeholder="Enter password">
+<br>
 <button onclick="checkPassword()">Enter</button>
 
 <p id="message"></p>
 
 <img id="photo" src="photo.jpg">
+
+</div>
 
 <script>
 var insults = [
@@ -80,7 +106,6 @@ var insults = [
 var wrongCount = 0;
 var locked = false;
 
-// 讓 Enter 可以送出
 document.getElementById("password").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         checkPassword();
@@ -91,7 +116,7 @@ function flashEffect() {
     document.body.style.backgroundColor = "white";
     setTimeout(function() {
         document.body.style.backgroundColor = "black";
-    }, 100);
+    }, 120);
 }
 
 function lockSystem() {
@@ -112,7 +137,7 @@ function checkPassword() {
 
     if (locked) return;
 
-    var input = document.getElementById("password").value;
+    var input = document.getElementById("password").value.trim();
     var message = document.getElementById("message");
     var photo = document.getElementById("photo");
 
@@ -142,4 +167,3 @@ function checkPassword() {
 
 </body>
 </html>
-
