@@ -2,8 +2,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<!-- 手機自適應關鍵 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>307 Secret</title>
@@ -73,6 +71,14 @@ button:active {
     height: auto;
     border: 2px solid #00ff99;
 }
+
+#video {
+    margin-top: 20px;
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #00ff99;
+}
 </style>
 </head>
 
@@ -90,6 +96,10 @@ button:active {
 
 <img id="photo" src="photo.jpg">
 
+<video id="video" controls muted>
+    <source src="video.mp4" type="video/mp4">
+</video>
+
 </div>
 
 <script>
@@ -106,6 +116,7 @@ var insults = [
 var wrongCount = 0;
 var locked = false;
 
+// Enter 送出
 document.getElementById("password").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         checkPassword();
@@ -140,6 +151,7 @@ function checkPassword() {
     var input = document.getElementById("password").value.trim();
     var message = document.getElementById("message");
     var photo = document.getElementById("photo");
+    var video = document.getElementById("video");
 
     if (input === "mavis") {
 
@@ -147,7 +159,12 @@ function checkPassword() {
 
         message.innerHTML = "豁然開朗。";
         message.style.color = "#00ff99";
+
         photo.style.display = "block";
+
+        video.style.display = "block";
+        video.currentTime = 0;
+        video.play();
 
     } else {
 
@@ -156,7 +173,11 @@ function checkPassword() {
         var randomIndex = Math.floor(Math.random() * insults.length);
         message.innerHTML = insults[randomIndex];
         message.style.color = "red";
+
         photo.style.display = "none";
+
+        video.pause();
+        video.style.display = "none";
 
         if (wrongCount >= 3) {
             lockSystem();
